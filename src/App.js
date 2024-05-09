@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div className="app">
+      {console.log("all", currentData)}
       <CityDateDisplay data={currentData} />
       <WeatherCityDisplay data={currentData} />
       <FiveDayForecast forecast={forecastData} />
