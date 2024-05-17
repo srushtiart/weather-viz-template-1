@@ -1,5 +1,14 @@
 import React from "react";
 
+
+
+const cityName = {
+  textAlign: "left",
+  fontSize: "1.5rem",
+  fontWeight: "light",
+  color: "#333",
+};
+
 function FiveDayForecast({ forecast }) {
   if (!forecast || forecast.length === 0) {
     return <div>Loading forecast...</div>;
