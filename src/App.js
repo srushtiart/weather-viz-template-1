@@ -5,8 +5,11 @@ import CityDateDisplay from "./components/CityDateDisplay";
 import WeatherCityDisplay from "./components/WeatherCityDisplay";
 import FiveDayForecast from "./components/FiveDayForecast";
 
+import "./index.css";
+
+
 function App() {
-  const API = "b2efe5292c39fd73143a306f48ffcd6f";
+  const API = "1321ac3d4a8396d99305e05751618257";
   const [currentData, setCurrentData] = useState({});
   const [forecastData, setForecastData] = useState([]);
   const [location, setLocation] = useState("");
@@ -58,7 +61,7 @@ function App() {
   return (
     <div className="app">
       {console.log("all", currentData)}
-      <CityDateDisplay data={currentData} />
+      <CityDateDisplay data={currentData}  />
       <WeatherCityDisplay data={currentData} />
       <FiveDayForecast forecast={forecastData} />
       <LocationField location={location} setLocation={setLocation} />

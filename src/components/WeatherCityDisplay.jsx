@@ -1,37 +1,88 @@
 import React from "react";
 
-function WeatherCityDisplay({ data }) {
-  // Define a maximum precipitation threshold for the purpose of calculating percentage
-  const maxPrecipitation = 10; // Maximum precipitation in mm for 100%
-
-  // Checking for precipitation data in rain or snow object
-  const precipitation = data.rain
-    ? data.rain["1h"] || data.rain["3h"]
-    : data.snow
-    ? data.snow["1h"] || data.snow["3h"]
-    : 0;
-
-  // Calculate precipitation percentage
-  const precipitationPercentage = (precipitation / maxPrecipitation) * 100;
+function WeatherDisplay({ weather }) {
+  // Inline styles for the component
+  const styles = {
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#f4f4f8",
+      height: "350px",
+      padding: "20px",
+      fontFamily: "'Arial', sans-serif",
+      borderRadius: "50px",
+    },
+    temperature: {
+      fontSize: "96px",
+      color: "#6a64c9",
+      fontWeight: "bold",
+      margin: "0",
+      display: "flex",
+      alignItems: "center",
+    },
+    degreeSymbol: {
+      fontSize: "24px",
+      color: "#6a64c9",
+      marginLeft: "5px",
+    },
+    condition: {
+      fontSize: "20px",
+      color: "#8b89bf",
+      marginTop: "-10px",
+    },
+    detailsContainer: {
+      display: "flex",
+      justifyContent: "space-around",
+      backgroundColor: "#d3c4f5",
+      borderRadius: "25px",
+      padding: "15px",
+      marginTop: "20px",
+      width: "80%",
+      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    },
+    detail: {
+      textAlign: "center",
+      color: "#5c5b79",
+      fontSize: "14px",
+    },
+    detailIcon: {
+      fontSize: "20px",
+      color: "#6a64c9",
+      marginBottom: "5px",
+    },
+  };
 
   return (
-    <div className="container">
-      <div className="top">
-        {data.main && (
-          <div>
-            <h1>{data.main.temp.toFixed()}°F</h1>
-            <p>{data.weather ? data.weather[0].main : null}</p>
-            <p>
-              Precipitation: {Math.min(100, precipitationPercentage.toFixed(2))}
-              %
-            </p>
-            <p>Humidity {data.main.humidity}%</p>
-            {data.wind && <p>Wind Speed {data.wind.speed.toFixed()} MPH</p>}
-          </div>
-        )}
+    <div style={styles.container}>
+      {/* Temperature Display */}
+      <div style={styles.temperature}>
+        19<span style={styles.degreeSymbol}>°</span>
+      </div>
+      {/* Weather Condition */}
+      <p style={styles.condition}>Cloudy</p>
+
+      {/* Weather Details */}
+      <div style={styles.detailsContainer}>
+        <div style={styles.detail}>
+          <div style={styles.detailIcon}>☂️</div>
+          <p>30%</p>
+          <p>Precipitation</p>
+        </div>
+        <div style={styles.detail}>
+          <div style={styles.detailIcon}>💧</div>
+          <p>20%</p>
+          <p>Humidity</p>
+        </div>
+        <div style={styles.detail}>
+          <div style={styles.detailIcon}>🌬️</div>
+          <p>12km/h</p>
+          <p>Wind Speed</p>
+        </div>
       </div>
     </div>
   );
 }
 
-export default WeatherCityDisplay;
+export default WeatherDisplay;

@@ -1,11 +1,19 @@
 import React from "react";
+import "./CityDateDisplay.css";
 
 
 const cityName = {
   textAlign: "center",
-  fontSize: "1.5rem",
+  fontSize: "30px",
   fontWeight: "bold",
-  color: "#333",
+  color:"#5157EB",
+  // boxShadow: "rgba(0, 0, 0, 0.25)", 
+  // dropshadow:"00000040",
+}
+const dateStyle ={
+  fontsize: "16px",
+    color: "#5157EB",
+    
 }
 
 function CityDateDisplay({ data }) {
@@ -17,10 +25,10 @@ function CityDateDisplay({ data }) {
   });
 
   return (
-    <div className="container">
+    <div className="container city-date-display">
       <div className="location">
         <p style={cityName}>{data.name}</p> {/* Display city name */}
-        <p>{date}</p> {/* Display formatted date */}
+        <p style={dateStyle}>{date}</p> {/* Display formatted date */}
       </div>
     </div>
   );
